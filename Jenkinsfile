@@ -10,7 +10,8 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git ' https://github.com/chayakruthi/grade-calculator.git'
+                git branch: 'main',
+                    url: 'https://github.com/chayakruthi/grade-calculator.git'
             }
         }
 
@@ -46,7 +47,7 @@ pipeline {
         failure {
             emailext(
                 subject: 'Jenkins Build FAILED',
-                body: 'Maven project build failed. Check Jenkins console output.',
+                body: 'Maven project build failed.',
                 to: 'chayamanjappa@gmail.com'
             )
         }
